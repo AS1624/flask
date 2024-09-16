@@ -1,0 +1,54 @@
+{
+    "scouts": [
+        "name",
+        "another name",
+        "a third name",
+        "fourth"
+    ],
+    "matches": [
+        [
+            {
+                "scout": "name",
+                "robot": "1",
+                "teamNumber": "3825"
+            },
+            {
+                "scout": "another name",
+                "robot": "2",
+                "teamNumber": "7"
+            },
+            {
+                "scout": "a third name",
+                "robot": "3",
+                "teamNumber": "25625"
+            },
+            {
+                "scout": "fourth",
+                "robot": "4",
+                "teamNumber": "12345"
+            }
+        ],
+        [
+            {
+                "scout": "name",
+                "robot": "1",
+                "teamNumber": "3825"
+            },
+            {
+                "scout": "another name",
+                "robot": "2",
+                "teamNumber": "7"
+            },
+            {
+                "scout": "a third name",
+                "robot": "3",
+                "teamNumber": "25625"
+            },
+            {
+                "scout": "fourth",
+                "robot": "4",
+                "teamNumber": "12345"
+            }
+        ]
+    ]
+}

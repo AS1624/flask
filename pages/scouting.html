@@ -1,0 +1,134 @@
+#scouting
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .top-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            height: 50%;
+        }
+        .bottom-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 50%;
+        }
+        .numberBox {
+            font-size: 48px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+        }
+        .button {
+            font-size: 48px;
+            padding: 15px 30px;
+            margin: 0px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 50%;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="top-container">
+                <form method="post" action="/api/scouting">
+                    <input type="hidden" id="match" name="match">
+                    <input type="hidden" id="robot" name="robot">
+                    <input type="text" id="samples" name="samples" class="numberBox" value = "0">
+                    <input type="text" id="specimens" name="specimens" class="numberBox" value = "0">
+                    <input type="submit", value="match over">
+                </form>
+            </div>
+
+        <div class="bottom-container">
+            <button style="background: darkGoldenRod;" class="button" onclick="increment('samples', 1)">Score one sample</button>
+            <button id="specimen" class="button" onclick="increment('specimens', 1)">Score one specimen</button>
+        </div>
+    </div>
+
+
+    <script>
+        const robot = (
+            new URLSearchParams(window.location.search)
+                .get("robot")
+        );
+        const match = (
+            new URLSearchParams(window.location.search)
+                .get("match")
+        );
+
+        document.getElementById("specimen").setAttribute(
+            "style",
+            "background: "
+            + (robot > 2 ? "fireBrick" : "navy")
+            + ";"
+        );
+
+        document.getElementById("match").setAttribute(
+            "value",
+            match
+        );
+        document.getElementById("robot").setAttribute(
+            "value",
+            robot
+        );
+
+        /*
+        document.getElementsByTagName("form")[0].setAttribute(
+            "action",
+            "/api/scouting?match=" + match
+            + "&robot=" + robot
+        );
+        */ 
+        function increment(boxId, value) {
+            const numberBox = document.getElementById(boxId);
+            let currentNumber = parseInt(numberBox.value);
+            numberBox.value = currentNumber + value;
+        }
+        /* 
+            + "&samples=" + document
+                                .getElementById("samples")
+                                .value
+
+            + "&specimens=" + document
+                                .getElementById("specimens")
+                                .value
+        */
+    </script>
+</body>
+</html>
+
